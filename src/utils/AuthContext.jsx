@@ -18,6 +18,7 @@ export const AuthProvider = ({children}) => {
         try{
             let accountDetails = await account.get();
             setUser(accountDetails)
+
         }catch(error){
             
         }
@@ -33,7 +34,9 @@ export const AuthProvider = ({children}) => {
             let accountDetails = await account.get();
             setUser(accountDetails)
             navigate('/')
-        }catch(error){
+           alert("Login user successfull")
+        } catch (error) {
+            alert("something went wrong")
             console.error(error)
         }
     }
@@ -41,6 +44,8 @@ export const AuthProvider = ({children}) => {
     const handleLogout = async () => {
         const response = await account.deleteSession('current');
         setUser(null)
+       confirm("are you sure want to exit")
+
     }
 
     const handleRegister = async (e, credentials) => {
@@ -61,6 +66,7 @@ export const AuthProvider = ({children}) => {
             let accountDetails = await account.get();
             setUser(accountDetails)
             navigate('/')
+      alert("user register succesfull")
         }catch(error){
             console.error(error)
         }
